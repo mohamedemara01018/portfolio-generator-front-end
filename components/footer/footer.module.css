@@ -1,0 +1,163 @@
+/* Footer Base Styles */
+.footer {
+    padding: 1rem;
+    background: linear-gradient(0, var(--color-bg), var(--color-surface));
+    border-top: 1px solid var(--color-text-light);
+    box-shadow: -2px -2px 20px rgba(0, 0, 0, 0.2);
+    /* position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0; */
+}
+
+.content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+/* Brand Section */
+.brandSection {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    flex: 3;
+}
+
+.brandTitle {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0;
+    color: var(--color-text);
+}
+
+.brandDescription {
+    font-size: 0.9rem;
+    margin: 0;
+    line-height: 1.5;
+    color: var(--color-text-light);
+}
+
+/* Links Section */
+.linksSection {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    flex: 3;
+}
+
+.sectionTitle {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0;
+    color: var(--color-text);
+}
+
+.linksList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.link {
+    text-decoration: none;
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+    transition: color 0.2s ease;
+}
+
+.link:hover {
+    color: var(--color-primary);
+}
+
+/* Social Section */
+.socialSection {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    flex: 4;
+}
+
+.socialLinks {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.socialLink {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+    transition: color 0.2s ease;
+}
+
+.socialLink:hover {
+    color: var(--color-primary);
+}
+
+.socialIcon {
+    font-size: 1.1rem;
+}
+
+.socialName {
+    font-weight: 500;
+}
+
+/* Bottom Bar */
+.bottomBar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--color-text-light);
+    font-size: 0.85rem;
+}
+
+.copyright p,
+.techStack p {
+    margin: 0;
+    color: var(--color-text-light);
+    opacity: 0.8;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .content {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        text-align: center;
+    }
+
+    .bottomBar {
+        flex-direction: column;
+        gap: 0.5rem;
+        text-align: center;
+    }
+
+    .socialLinks {
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 1.5rem 1rem 1rem;
+    }
+
+    .content {
+        gap: 1rem;
+    }
+
+    .brandTitle {
+        font-size: 1.25rem;
+    }
+}
