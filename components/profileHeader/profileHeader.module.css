@@ -1,0 +1,108 @@
+/* .profileHeaderContainer {
+    position: relative;
+
+}
+
+.profileMenu {
+    position: absolute;
+    right: 50%;
+    transform: translateX(50%);
+    background-color: var(--color-primary-light);
+    width: 100px;
+}
+
+.navList {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    width: 100%;
+    background: red;
+}
+
+.li {
+    width: 100%;
+    background: grenn;
+}
+
+.navLink {
+    background: green;
+    width: 100%;
+} */
+
+.profileHeaderContainer {
+    position: relative;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.profileImage {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 0.5px solid var(--color-text);
+    transition: border-color 0.3s ease;
+}
+
+.profileImage:hover {
+    border-color: var(--color-primary);
+}
+
+
+
+.image {
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.profileMenu {
+    position: absolute;
+    top: 0;
+    right: 0%;
+    transform: translateX(10%);
+    top: calc(100% + 5px);
+    background: var(--color-bg);
+    border: 1px solid var(--color-text-light);
+    border-radius: 4px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 12px 0;
+    min-width: 180px;
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+
+
+
+
+.navLink {
+    display: block;
+    padding: 10px 16px;
+    color: var(--color-text);
+    transition: 0.2s ease;
+}
+
+.navLink:hover {
+    background: var(--color-primary);
+}
+
+.logout {
+    width: 100%;
+    padding: 10px 16px;
+    background: var(--color-primary);
+    border: none;
+    border-radius: 0 0 4px 4px;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s ease;
+    position: relative;
+    top: 12px;
+}
+
+.logout:hover {
+    background: var(--color-primary-light);
+
+}

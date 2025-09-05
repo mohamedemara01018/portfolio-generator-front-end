@@ -1,0 +1,97 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.nameRow {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.inputGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-text);
+}
+
+.input {
+    padding: 0.875rem 1rem;
+    border: 2px solid var(--color-text-light);
+    border-radius: 8px;
+    font-size: 1rem;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    transition: all 0.2s ease;
+}
+
+.input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.input::placeholder {
+    color: var(--color-text-light);
+    opacity: 0.7;
+}
+
+.inputError {
+    border-color: #ef4444;
+}
+
+.inputError:focus {
+    border-color: #ef4444;
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+.errorMessage {
+    font-size: 0.8rem;
+    color: #ef4444;
+    margin-top: 0.25rem;
+}
+
+/* Submit Button */
+.submitButton {
+    padding: 1rem;
+    background-color: var(--color-primary);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-top: 0.5rem;
+}
+
+.submitButton:hover:not(:disabled) {
+    background-color: var(--color-primary-dark);
+    transform: translateY(-1px);
+}
+
+.submitButton:active {
+    transform: translateY(0);
+}
+
+.submitButton:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+
+/* Responsive Design */
+@media (max-width: 640px) {
+    .nameRow {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+}

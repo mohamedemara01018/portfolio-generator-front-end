@@ -1,0 +1,105 @@
+.loginForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    width: 100%;
+}
+
+.inputContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 0.5rem;
+    width: 100%;
+}
+
+.label {
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.input {
+    font-size: 1rem;
+    width: 100%;
+    padding: 0.85rem 1rem;
+    border-radius: 8px;
+    border: none;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    border: 2px solid var(--color-text-light);
+}
+
+.input:focus {
+    outline-color: var(--color-primary);
+
+}
+
+
+
+.passwordContainer {
+    width: 100%;
+    position: relative;
+}
+
+.eye {
+    position: absolute;
+    right: 10px;
+    bottom: 50%;
+    transform: translateY(50%);
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.eye:hover {
+    font-size: 1.4rem;
+    color: var(--color-primary);
+}
+
+
+.inputError {
+    border-color: #ef4444;
+}
+
+.inputError:focus {
+    outline-color:  #ef4444;
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+.errorMessage {
+    font-size: 0.8rem;
+    color: #ef4444;
+    margin-top: 0.25rem;
+}
+
+/* Submit Button */
+.submitButton {
+    padding: 1rem;
+    background-color: var(--color-primary);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-top: 0.5rem;
+    width: 100%;
+}
+
+.submitButton:hover:not(:disabled) {
+    background-color: var(--color-primary-dark);
+    transform: translateY(-1px);
+}
+
+.submitButton:active {
+    transform: translateY(0);
+}
+
+.submitButton:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
