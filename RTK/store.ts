@@ -4,6 +4,9 @@ import registerSlice from './slices/userSlice/registerSlice'
 import loginSlice from './slices/userSlice/loginSlice'
 import authSlice from './slices/userSlice/authSlice'
 import logoutSlice from './slices/userSlice/logoutSlice'
+import verificationSlice from './slices/userSlice/verificationSlice'
+import reSendCodeSlice from './slices/userSlice/resendCodeSlice'
+
 export const store = configureStore({
     reducer: {
         theme: themeSlice,
@@ -11,6 +14,8 @@ export const store = configureStore({
         login: loginSlice,
         auth: authSlice,
         logout: logoutSlice,
+        verification: verificationSlice,
+        reSendCode: reSendCodeSlice,
     }
 })
 

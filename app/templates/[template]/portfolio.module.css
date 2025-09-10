@@ -1,0 +1,110 @@
+/* Portfolio Page Styles */
+.portfolio {
+  min-height: 100vh;
+  background-color: var(--color-bg);
+}
+
+/* Loading States */
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  gap: 1rem;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--color-surface);
+  border-top: 3px solid var(--color-primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading p {
+  color: var(--color-text-light);
+  font-size: 1.1rem;
+}
+
+/* Error States */
+.error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  gap: 1rem;
+  text-align: center;
+  padding: 2rem;
+}
+
+.error h2 {
+  color: var(--color-text);
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.error p {
+  color: var(--color-text-light);
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+}
+
+.retryButton {
+  padding: 0.75rem 1.5rem;
+  background-color: var(--color-primary);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.retryButton:hover {
+  background-color: var(--color-primary-dark);
+  transform: translateY(-2px);
+}
+
+/* Theme Variations */
+.modern {
+  --section-spacing: 5rem;
+  --border-radius: 12px;
+}
+
+.classic {
+  --section-spacing: 4rem;
+  --border-radius: 8px;
+}
+
+.minimal {
+  --section-spacing: 3rem;
+  --border-radius: 4px;
+}
+
+.creative {
+  --section-spacing: 6rem;
+  --border-radius: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .portfolio {
+    padding: 0 1rem;
+  }
+  
+  .loading, .error {
+    padding: 1rem;
+  }
+  
+  .error h2 {
+    font-size: 1.5rem;
+  }
+}

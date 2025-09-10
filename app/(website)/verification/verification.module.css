@@ -1,0 +1,110 @@
+.verificationContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    min-height: 80vh;
+}
+
+.verificationCard {
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    background: var(--color-surface);
+    padding: 2.5rem;
+    border-radius: 10px;
+    border: 1px solid var(--color-text-light);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Header */
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    text-align: center;
+}
+
+.title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-text);
+    margin: 0;
+}
+
+.subtitle {
+    font-size: 0.95rem;
+    color: var(--color-text-light);
+    line-height: 1.5;
+    margin: 0;
+    max-width: 400px;
+}
+
+/* Footer */
+.footer {
+    border-top: 1px solid var(--color-text-light);
+    width: 100%;
+    text-align: center;
+    padding-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.resendText {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+}
+
+.resendButton {
+    background: none;
+    border: none;
+    color: var(--color-primary);
+    cursor: pointer;
+    font-size: 0.9rem;
+    text-decoration: underline;
+    padding: 0;
+}
+
+.resendButton:hover {
+    color: var(--color-primary-dark);
+}
+
+.backLink {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+.link {
+    color: var(--color-primary);
+    text-decoration: none;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .verificationContainer {
+        padding: 1rem;
+    }
+    
+    .verificationCard {
+        padding: 2rem;
+    }
+    
+    .title {
+        font-size: 1.75rem;
+    }
+    
+    .subtitle {
+        font-size: 0.9rem;
+    }
+}

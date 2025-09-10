@@ -1,0 +1,78 @@
+.modelContainer {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.14);
+    z-index: 1002;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateY(-100vh);
+    transition: 0.2s;
+}
+
+.modelContainer[data-open="true"] {
+    transform: translateY(0);
+}
+
+.modelCard {
+    background-color: var(--color-bg);
+    padding: 2rem;
+    border-radius: 8px;
+    border: 1px solid var(--color-text-light);
+    width: 400px;
+}
+
+.modelContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.inputContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.input {
+    padding: 0.5rem 1rem;
+    outline-color: var(--color-primary);
+    width: inherit;
+}
+
+.btnsContainer {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn {
+    width: 100px;
+    padding-block: 0.5rem;
+    background-color: var(--color-primary-light);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.saveBtn:hover {
+    background-color: var(--color-primary);
+}
+
+
+@media (max-width:540px) {
+    .modelCard {
+        width: 350px;
+    }
+}
+
+@media (max-width:400px) {
+    .modelCard {
+        width: 300px;
+    }
+}

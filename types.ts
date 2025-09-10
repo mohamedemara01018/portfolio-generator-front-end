@@ -54,7 +54,44 @@ interface userProfile {
     image: string
 }
 
+interface verificationState {
+    loading: boolean | null,
+    error: string | null,
+    message: string | null
+}
+
+interface verificationData {
+    email: string,
+    code: string
+}
+interface reSendCodeState {
+    loading: boolean | null,
+    error: string | null,
+    message: string | null
+}
+
+
+
+// templates 
+
+interface HeroData {
+    name: string,
+    title: string,
+    bio: string,
+    avatar: string,
+    contact: {
+        email: string,
+        phone: string,
+        linkedin: string,
+        github: string,
+        website: string,
+    }
+}
 export type {
+    HeroData,
+    reSendCodeState,
+    verificationData,
+    verificationState,
     FormData,
     FormErrors,
     FormDataLogin,

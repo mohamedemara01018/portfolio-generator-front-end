@@ -17,7 +17,7 @@ export const fetchRegisterUser = createAsyncThunk('registerSlice/fetchRegisterUs
     try {
         const res = await fetch(`${baseUrl}/users/register`, {
             method: "POST",
-            credentials: 'include', 
+            credentials: 'include',
             headers: {
                 "Content-Type": "application/json"
             },

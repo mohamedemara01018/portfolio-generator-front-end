@@ -1,0 +1,234 @@
+/* Portfolio Skills Styles */
+.skills {
+  padding: 5rem 0;
+  background-color: var(--color-bg);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin: 0 0 1rem 0;
+  position: relative;
+}
+
+.title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 4px;
+  background-color: var(--color-primary);
+  border-radius: 2px;
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  color: var(--color-text-light);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.skillsContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-bottom: 4rem;
+}
+
+.skillCategory {
+  background-color: var(--color-surface);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.categoryTitle {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin: 0 0 1.5rem 0;
+  text-align: center;
+}
+
+.skillsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 1rem;
+}
+
+.skillItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  background-color: var(--color-bg);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  cursor: default;
+}
+
+.skillItem:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border: 2px solid var(--color-primary);
+}
+
+.skillIcon {
+  font-size: 1.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.skillName {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--color-text);
+  text-align: center;
+}
+
+.proficiencySection {
+  background-color: var(--color-surface);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.proficiencyTitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin: 0 0 2rem 0;
+  text-align: center;
+}
+
+.proficiencyGrid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.proficiencyItem {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.proficiencyItem span {
+  min-width: 150px;
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+.proficiencyBar {
+  flex: 1;
+  height: 8px;
+  background-color: var(--color-bg);
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+}
+
+.proficiencyFill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-primary-light));
+  border-radius: 4px;
+  transition: width 1s ease-in-out;
+  position: relative;
+}
+
+.proficiencyFill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .skills {
+    padding: 3rem 0;
+  }
+  
+  .container {
+    padding: 0 1rem;
+  }
+  
+  .header {
+    margin-bottom: 3rem;
+  }
+  
+  .title {
+    font-size: 2rem;
+  }
+  
+  .skillsContainer {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+  }
+  
+  .skillCategory {
+    padding: 1.5rem;
+  }
+  
+  .skillsGrid {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 0.75rem;
+  }
+  
+  .skillItem {
+    padding: 0.75rem;
+  }
+  
+  .proficiencySection {
+    padding: 1.5rem;
+  }
+  
+  .proficiencyItem {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+  }
+  
+  .proficiencyItem span {
+    min-width: auto;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 1.8rem;
+  }
+  
+  .skillsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .skillName {
+    font-size: 0.8rem;
+  }
+}
