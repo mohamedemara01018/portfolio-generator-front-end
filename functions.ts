@@ -62,4 +62,55 @@ const validateFormLogin = (formData: FormDataLogin) => {
 }
 
 
-export { validateFormRegister, validateFormLogin }
+async function authUser(cookieHeader: string) {
+    let res;
+
+    try {
+        const response = await fetch(`${baseUrl}/users/check`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                cookie: cookieHeader, // ✅ نمرر الكوكيز
+            },
+            cache: "no-store", // ✅ عشان يتفetch كل مرة
+        });
+        res = await response.json();
+
+    } catch (error) {
+        console.log("fetch error", error);
+        res = { logIn: false };
+    }
+    return res
+}
+
+
+
+async function getTemplates() {
+    try {
+        const res = await fetch(`${baseUrl}/templates`);
+        if (!res.ok) {
+            throw new Error('failed to fetch all templates')
+        }
+        const data = await res.json();
+        return data;
+    } catch (error) {
+        throw new Error(`erorr ${error}`);
+    }
+}
+
+
+async function getTemplatesById(id: string) {
+    // console.log(id);
+    try {
+        const res = await fetch(`${baseUrl}/templates/${id}`);
+        if (!res.ok) {
+            throw new Error('failed to fetch template')
+        }
+        const data = await res.json();
+        return data;
+    } catch (error) {
+        throw new Error(`erorr ${error}`);
+    }
+}
+
+export { validateFormRegister, validateFormLogin, authUser, getTemplates, getTemplatesById }

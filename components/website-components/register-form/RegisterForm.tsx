@@ -19,8 +19,8 @@ function RegisterForm({ }) {
         firstName: '',
         lastName: '',
         email: '',
-        password: '11111111',
-        confirmPassword: '11111111',
+        password: '',
+        confirmPassword: '',
     });
 
     const router = useRouter();
@@ -143,6 +143,7 @@ function RegisterForm({ }) {
                 </label>
 
                 <PasswordContainer
+                    name='password'
                     password={formData.password}
                     handleChange={handleChange}
                     error={errors.password}
@@ -158,6 +159,7 @@ function RegisterForm({ }) {
                     Confirm Password
                 </label>
                 <PasswordContainer
+                    name='confirmPassword'
                     password={formData.confirmPassword}
                     handleChange={handleChange}
                     error={errors.confirmPassword}

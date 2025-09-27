@@ -33,9 +33,7 @@ export const fetchAuthUser = createAsyncThunk('authSlice/fetchAuthUser', async (
 
 
 const initialState: AuthState = {
-    loading: null,
-    error: null,
-    isAuthenticated: false,
+
     user: null,
     logIn: false
 };
@@ -44,41 +42,25 @@ const authSlice = createSlice({
     name: 'authSlice',
     initialState,
     reducers: {
-        logout: (state) => {
-            state.isAuthenticated = false;
-            state.user = null;
-            state.logIn = false;
-            state.error = null;
-        },
-        clearError: (state) => {
-            state.error = null;
-        }
+
     },
     extraReducers: (builder) => {
         builder
             .addCase(fetchAuthUser.pending, (state) => {
-                state.loading = true;
-                state.error = null;
+                state.logIn = false
             })
             .addCase(fetchAuthUser.fulfilled, (state, action) => {
-                state.loading = false;
-                state.isAuthenticated = action.payload.logIn;
+
                 state.logIn = action.payload.logIn;
                 state.user = action.payload.user;
-                state.error = null;
             })
             .addCase(fetchAuthUser.rejected, (state, action) => {
-                state.loading = false;
-                state.isAuthenticated = false;
                 state.logIn = false;
                 state.user = null;
-                state.error = String(action.payload) || 'Authentication check failed';
             });
     }
 });
 
-// Actions
-export const { logout, clearError } = authSlice.actions;
 
 // Selectors
 export const authState = (state: rootState) => state.auth;

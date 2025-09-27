@@ -2,6 +2,9 @@ import Link from 'next/link';
 import styles from './register.module.css';
 import RegisterForm from '@/components/website-components/register-form/RegisterForm';
 import { Metadata } from 'next';
+import { cookies } from 'next/headers';
+import { authUser } from '@/functions';
+import { redirect, RedirectType } from 'next/navigation';
 
 
 export const metadata: Metadata = {
@@ -9,7 +12,18 @@ export const metadata: Metadata = {
 }
 
 
-function RegisterPage() {
+async function RegisterPage() {
+
+    const cookieStore = await cookies();
+    const cookieHeader = cookieStore.toString();
+
+    let res = await authUser(cookieHeader)
+
+    if (res?.logIn) {
+        console.log(res.logIn)
+        redirect("/", RedirectType.replace);
+    }
+
 
     return (
         <div className={styles.registerContainer}>

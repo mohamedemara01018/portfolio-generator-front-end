@@ -1,0 +1,130 @@
+.container {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(5, 5, 5, 0.836);
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    z-index: 1000;
+    overflow-y: auto;
+    padding-block: 2rem;
+}
+
+.card {
+    background: var(--color-bg);
+    padding: 2rem;
+    width: 400px;
+    border-radius: 5px;
+    box-shadow: var(--shadow)
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 1rem;
+}
+
+.inputContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    gap: 0.25rem;
+    width: 100%;
+}
+
+.input {
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+    outline-color: var(--color-primary);
+}
+
+
+.textArea {
+    resize: vertical;
+}
+
+.technologiesContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 0.5rem;
+}
+
+.image {
+    border: 1px solid var(--color-text-light);
+    cursor: pointer;
+}
+
+.technologies {
+    display: flex;
+    align-items: start;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+}
+
+.technology {
+    position: relative;
+    overflow: hidden;
+}
+
+.technology p {
+    background-color: rgb(231, 231, 231);
+    padding: 0.2rem 0.5rem;
+    border-radius: 0.5rem;
+    border: 1px solid var(--color-text-light);
+}
+
+.technology span {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-primary);
+    color: var(--color-bg);
+    transform: translateY(-100%);
+    opacity: 0;
+    transition: 0.1s;
+    cursor: pointer;
+}
+
+.technology:hover span {
+    transform: translateY(0);
+    opacity: 1
+}
+
+.btnsContainer {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    gap: 0.5rem;
+}
+
+.btn {
+    padding-block: 0.5rem;
+    background-color: var(--color-primary);
+    width: 100px;
+    border-radius: 4px;
+    transition: 0.3s;
+    margin-top: 0.5rem;
+}
+
+.cancel {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+}
+
+.save:hover {
+    background-color: var(--color-primary-light);
+}
+
+.cancel:hover {
+    background: var(--color-primary);
+    color: var(--color-bg);
+}

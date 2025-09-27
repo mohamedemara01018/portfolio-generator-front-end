@@ -2,6 +2,10 @@ import Link from 'next/link'
 import styles from './login.module.css'
 import LoginForm from '@/components/website-components/login-form/LoginForm'
 import { Metadata } from 'next'
+import { cookies } from 'next/headers'
+import { authUser } from '@/functions'
+import { redirect } from 'next/navigation'
+import { RedirectType } from 'next/navigation'
 
 
 export const metadata: Metadata = {
@@ -9,7 +13,18 @@ export const metadata: Metadata = {
 }
 
 
-function page() {
+async function page() {
+
+    const cookieStore = await cookies();
+    const cookieHeader = cookieStore.toString();
+
+    let res = await authUser(cookieHeader)
+    // console.log(res)
+    if (res?.logIn) {
+        console.log(res.logIn)
+        redirect("/", RedirectType.replace);
+    }
+
     return (
         <div className={styles.loginContainer}>
             <div className={styles.loginCard}>

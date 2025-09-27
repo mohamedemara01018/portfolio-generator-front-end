@@ -226,8 +226,13 @@
 }
 
 @keyframes spin {
-  0% { transform: translateY(-50%) rotate(0deg); }
-  100% { transform: translateY(-50%) rotate(360deg); }
+  0% {
+    transform: translateY(-50%) rotate(0deg);
+  }
+
+  100% {
+    transform: translateY(-50%) rotate(360deg);
+  }
 }
 
 .successMessage {
@@ -250,56 +255,106 @@
   text-align: center;
 }
 
+
+
+.icons {
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 2rem;
+
+}
+
+.icon {
+  cursor: pointer;
+  transition: 0.3s;
+  color: var(--color-primary);
+}
+
+.icon:hover {
+  font-size: 2.1rem;
+}
+
+.deleteIcon,
+.editIcon {
+  position: relative;
+}
+
+.drobMenu {
+  position: absolute;
+  width: 150px;
+  top: 100%;
+  right: -110%;
+  display: none;
+  background-color: var(--color-text-light);
+  border-radius: 3px;
+  border: 1px solid var(--color-text);
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  color: var(--color-bg);
+}
+
+.deleteIcon:hover .drobMenuDelete {
+  display: block;
+}
+
+.editIcon:hover .drobMenuEdit {
+  display: block;
+}
+
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .contact {
     padding: 3rem 0;
   }
-  
+
   .container {
     padding: 0 1rem;
   }
-  
+
   .header {
     margin-bottom: 3rem;
   }
-  
+
   .title {
     font-size: 2rem;
   }
-  
+
   .content {
     grid-template-columns: 1fr;
     gap: 2rem;
   }
-  
+
   .contactInfo,
   .contactForm {
     padding: 1.5rem;
   }
-  
+
   .contactItem {
     flex-direction: column;
     text-align: center;
     gap: 0.75rem;
   }
-  
+
   .contactItem:hover {
     transform: translateY(-3px);
   }
-  
+
   .socialLinks {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
   }
-  
+
   .socialLink {
     flex: 1;
     min-width: 120px;
     justify-content: center;
   }
-  
+
   .socialLink:hover {
     transform: translateY(-3px);
   }
@@ -309,12 +364,12 @@
   .title {
     font-size: 1.8rem;
   }
-  
+
   .contactInfo,
   .contactForm {
     padding: 1rem;
   }
-  
+
   .socialLinks {
     flex-direction: column;
   }

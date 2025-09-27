@@ -3,7 +3,7 @@ import { rootState } from "@/RTK/store";
 import { logoutState } from "@/types";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-export const fetchLogoutUser = createAsyncThunk('', async (_, { rejectWithValue }) => {
+export const fetchLogoutUser = createAsyncThunk('logoutSlice/fetchLogoutUser', async (_, { rejectWithValue }) => {
     try {
         const res = await fetch(`${baseUrl}/users/logout`, {
             method: "GET",

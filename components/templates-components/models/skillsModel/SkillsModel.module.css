@@ -1,0 +1,116 @@
+.container {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.737);
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    z-index: 1001;
+}
+
+.card {
+    margin-block: auto;
+    width: 400px;
+}
+
+
+.content {
+    background-color: var(--color-surface);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    border-radius: 5px;
+    box-shadow: var(--shadow);
+}
+
+.inputContainer {
+    display: flex;
+    flex-direction: column;
+    align-content: start;
+    gap: 0.25rem;
+    width: 100%;
+}
+
+
+
+.label {
+    font-weight: bold;
+}
+
+.input {
+    padding: 0.5rem 0.75rem;
+    outline-color: var(--color-primary);
+    border-radius: 3px;
+    border: 1px solid var(--color-text-light);
+}
+
+.skills {
+
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.skill {
+    position: relative;
+    background-color: #d4d4d4;
+    padding: 0.25rem;
+    border-radius: 0.25rem;
+    overflow: hidden;
+}
+
+.skill span {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background-color: var(--color-primary);
+    color: var(--color-bg);
+    border-radius: 3px;
+    cursor: pointer;
+    transform: translateY(-100%);
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.skill:hover span {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.btns {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    gap: 0.5rem;
+}
+
+.btn {
+    background-color: var(--color-primary);
+    padding-block: 0.5rem;
+    width: 100px;
+    border-radius: 4px;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.cancel {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+}
+
+.save:hover {
+    background-color: var(--color-primary-light);
+}
+
+.cancel:hover {
+    background-color: var(--color-primary);
+    color: var(--color-bg);
+}

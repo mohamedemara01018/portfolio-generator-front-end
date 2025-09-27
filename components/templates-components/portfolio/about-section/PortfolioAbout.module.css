@@ -1,13 +1,7 @@
 /* Portfolio About Styles */
 .about {
-  padding: 5rem 0;
+  padding: 5rem 3rem;
   background-color: var(--color-bg);
-}
-
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 2rem;
 }
 
 .content {
@@ -42,10 +36,13 @@
   border-radius: 2px;
 }
 
+
 .description {
   font-size: 1.1rem;
   line-height: 1.7;
   color: var(--color-text-light);
+  user-select: none;
+  cursor: pointer;
 }
 
 .highlights {
@@ -53,6 +50,34 @@
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 1.5rem;
   margin-top: 2rem;
+}
+
+
+.biotextAreaContianer {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.textArea {
+  width: 100%;
+  resize: vertical;
+  min-height: 150px;
+  padding: 1rem;
+}
+
+.biotextAreaContianer button {
+  padding: 0.5rem 2rem;
+  background-color: var(--color-primary);
+  border-radius: 5px;
+}
+
+.biotextAreaContianer button:hover {
+  background-color: var(--color-primary-light);
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 .highlight {
@@ -100,6 +125,7 @@
 }
 
 .skillTag {
+  position: relative;
   padding: 0.75rem 1rem;
   background-color: var(--color-surface);
   border: 2px solid transparent;
@@ -109,49 +135,100 @@
   color: var(--color-text);
   transition: all 0.3s ease;
   cursor: default;
+  overflow: hidden;
 }
 
+
+
 .skillTag:hover {
-  border-color: var(--color-primary);
-  background-color: var(--color-primary);
-  color: white;
   transform: translateY(-2px);
 }
+
+
+
+.icons {
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 2rem;
+
+}
+
+.icon {
+  cursor: pointer;
+  transition: 0.3s;
+  color: var(--color-primary);
+}
+
+.icon:hover {
+  font-size: 2.1rem;
+}
+
+.deleteIcon,
+.editIcon {
+  position: relative;
+}
+
+.drobMenu {
+  position: absolute;
+  width: 150px;
+  top: 100%;
+  right: -110%;
+  display: none;
+  background-color: var(--color-text-light);
+  border-radius: 3px;
+  border: 1px solid var(--color-text);
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  color: var(--color-bg);
+}
+
+.deleteIcon:hover .drobMenuDelete {
+  display: block;
+}
+
+.editIcon:hover .drobMenuEdit {
+  display: block;
+}
+
+
 
 /* Responsive Design */
 @media (max-width: 768px) {
   .about {
     padding: 3rem 0;
   }
-  
+
   .container {
     padding: 0 1rem;
   }
-  
+
   .content {
     grid-template-columns: 1fr;
     gap: 3rem;
   }
-  
+
   .title {
     font-size: 2rem;
     text-align: center;
   }
-  
+
   .title::after {
     left: 50%;
     transform: translateX(-50%);
   }
-  
+
   .highlights {
     grid-template-columns: 1fr;
   }
-  
+
   .skillsGrid {
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
     gap: 0.75rem;
   }
-  
+
   .skillTag {
     padding: 0.6rem 0.8rem;
     font-size: 0.9rem;
@@ -162,7 +239,7 @@
   .title {
     font-size: 1.8rem;
   }
-  
+
   .skillsGrid {
     grid-template-columns: repeat(2, 1fr);
   }

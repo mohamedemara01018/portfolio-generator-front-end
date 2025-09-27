@@ -38,9 +38,6 @@ interface initialStateRegister {
 }
 
 interface AuthState {
-    loading: boolean | null;
-    error: string | null;
-    isAuthenticated: boolean;
     user: any | null;
     logIn: boolean;
 }
@@ -87,7 +84,56 @@ interface HeroData {
         website: string,
     }
 }
+
+interface AboutData {
+    bio: string
+    skills: string[],
+    experience: string
+    projects: string
+    focus: string
+}
+
+interface ProjectsData {
+    title: string,
+    description: string,
+    image: string,
+    technologies: string[],
+    liveUrl: string,
+    githubUrl: string,
+}
+
+interface SkillCategories {
+    title: string
+    skills: string[]
+    level: number
+}
+
+interface Contact {
+    email: string,
+    phone: string,
+    linkedin: string,
+    github: string,
+    website: string,
+}
+
+
+
+interface initialStateTemplate {
+    image: string,
+    type: string,
+    description: string,
+    heroData: HeroData,
+    aboutData: AboutData
+    projectsData: ProjectsData[],
+    skillCategories: SkillCategories[]
+    contact: Contact
+}
 export type {
+    Contact,
+    AboutData,
+    SkillCategories,
+    ProjectsData,
+    initialStateTemplate,
     HeroData,
     reSendCodeState,
     verificationData,

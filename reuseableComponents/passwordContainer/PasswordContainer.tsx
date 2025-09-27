@@ -3,7 +3,7 @@ import { ChangeEvent, useState } from 'react'
 import styles from './passwordContainer.module.css'
 import { FaEye, FaEyeSlash } from 'react-icons/fa'
 
-function PasswordContainer({ password, handleChange, error }: { password: string, handleChange: (e: ChangeEvent<HTMLInputElement>) => void, error: string | undefined }) {
+function PasswordContainer({ name, password, handleChange, error }: { name: string, password: string, handleChange: (e: ChangeEvent<HTMLInputElement>) => void, error: string | undefined }) {
     const [showPassword, setShowPassword] = useState<boolean>(false)
 
     return (
@@ -13,7 +13,7 @@ function PasswordContainer({ password, handleChange, error }: { password: string
                 className={`${styles.input} ${error?.length ? styles.inputError : ''}`}
                 id="password"
                 placeholder='Enter Your password'
-                name='password'
+                name={name}
                 value={password}
                 onChange={handleChange} />
 

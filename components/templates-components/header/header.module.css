@@ -133,6 +133,20 @@
   transition: all 0.3s ease;
 }
 
+.portfolioBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background-color: var(--color-primary);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
 .ctaButton:hover {
   background-color: var(--color-primary-dark);
   transform: translateY(-2px);
@@ -311,27 +325,27 @@
     padding: 0 1rem;
     height: 60px;
   }
-  
+
   .nav {
     display: none;
   }
-  
+
   .ctaButton {
     display: none;
   }
-  
+
   .menuToggle {
     display: flex;
   }
-  
+
   .mobileOverlay {
     display: block;
   }
-  
+
   .logoText {
     font-size: 1.3rem;
   }
-  
+
   .logoIcon {
     width: 36px;
     height: 36px;
@@ -342,11 +356,11 @@
   .mobileMenu {
     width: 100%;
   }
-  
+
   .logoText {
     font-size: 1.2rem;
   }
-  
+
   .logoIcon {
     width: 32px;
     height: 32px;
@@ -355,6 +369,7 @@
 
 /* Animation for smooth transitions */
 @media (prefers-reduced-motion: reduce) {
+
   .header,
   .navLink,
   .ctaButton,
@@ -362,7 +377,7 @@
   .mobileNavLink {
     transition: none;
   }
-  
+
   .mobileMenu {
     animation: none;
     transform: translateX(0);

@@ -6,7 +6,6 @@ import PasswordContainer from '@/reuseableComponents/passwordContainer/PasswordC
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchLoginUser, loginState } from '@/RTK/slices/userSlice/loginSlice'
 import { appdispatch } from '@/RTK/store'
-import { redirect } from 'next/dist/server/api-utils'
 import { useRouter } from 'next/navigation'
 import { validateFormLogin } from '@/functions'
 
@@ -85,6 +84,7 @@ function LoginForm() {
             <div className={styles.inputContainer}>
                 <label htmlFor="password" className={styles.label}>Password</label>
                 <PasswordContainer
+                    name='password'
                     password={formData.password}
                     handleChange={handleChange}
                     error={String(errors.password)} />

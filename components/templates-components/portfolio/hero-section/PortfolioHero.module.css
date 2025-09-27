@@ -4,10 +4,54 @@
   background: linear-gradient(135deg, var(--color-bg) 0%, var(--color-surface) 100%);
   min-height: 80vh;
   display: flex;
+  flex-direction: column;
   align-items: center;
+  gap: 2rem;
 }
 
+.icons {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 2rem
+}
 
+.icon {
+  cursor: pointer;
+  transition: 0.3s;
+  color: var(--color-primary);
+}
+
+.icon:hover {
+  font-size: 2.1rem;
+}
+
+.deleteIcon,
+.editIcon {
+  position: relative;
+}
+
+.drobMenu {
+  position: absolute;
+  width: 150px;
+  top: 100%;
+  right: -110%;
+  display: none;
+  background-color: var(--color-text-light);
+  border-radius: 3px;
+  border: 1px solid var(--color-text);
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  color: var(--color-bg);
+}
+
+.deleteIcon:hover .drobMenuDelete {
+  display: block;
+}
+
+.editIcon:hover .drobMenuEdit {
+  display: block;
+}
 
 .content {
   display: grid;
@@ -23,6 +67,7 @@
   gap: 1.5rem;
 
 }
+
 
 
 

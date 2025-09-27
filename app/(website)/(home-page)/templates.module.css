@@ -8,7 +8,7 @@
 }
 
 .header {
-    font-size: 1.5rem;
+    font-size: 1rem;
     width: 100%;
     background-color: var(--color-surface);
     padding: 0.5rem 1rem;
@@ -28,7 +28,7 @@
 
 .template {
     background-color: var(--color-surface);
-    max-width: 31%;
+    min-width: 31%;
     border-radius: 10px;
     overflow: hidden;
     box-shadow: var(--shadow)
@@ -61,7 +61,7 @@
 
 
     .template {
-        max-width: 47%;
+        min-width: 47%;
     }
 }
 
@@ -69,6 +69,6 @@
 @media (max-width:641px) {
 
     .template {
-        max-width: 100%;
+        min-width: 100%;
     }
 }
