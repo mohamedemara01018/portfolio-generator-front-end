@@ -1,28 +1,32 @@
 .container {
     position: fixed;
     inset: 0;
-    background-color: rgba(0, 0, 0, 0.737);
+    background-color: rgba(0, 0, 0, 0.6);
     display: flex;
-    align-content: center;
+    align-items: center;
     justify-content: center;
-    z-index: 1001;
+    z-index: 2200;
+    padding: 2rem;
+    backdrop-filter: blur(4px);
 }
 
 .card {
     margin-block: auto;
-    width: 400px;
+    width: 100%;
+    max-width: 520px;
 }
 
 
 .content {
-    background-color: var(--color-surface);
-    padding: 2rem;
+    background-color: var(--color-bg);
+    padding: 1.5rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 1rem;
-    border-radius: 5px;
-    box-shadow: var(--shadow);
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+    border: 1px solid var(--color-text-light);
 }
 
 .inputContainer {
@@ -40,10 +44,17 @@
 }
 
 .input {
-    padding: 0.5rem 0.75rem;
+    padding: 0.6rem 0.75rem;
     outline-color: var(--color-primary);
-    border-radius: 3px;
+    border-radius: 8px;
     border: 1px solid var(--color-text-light);
+    background: var(--color-surface, var(--color-bg));
+    transition: box-shadow 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.input:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(0, 120, 255, 0.15);
 }
 
 .skills {
@@ -58,8 +69,8 @@
 .skill {
     position: relative;
     background-color: #d4d4d4;
-    padding: 0.25rem;
-    border-radius: 0.25rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 8px;
     overflow: hidden;
 }
 
@@ -72,7 +83,7 @@
     gap: 0.5rem;
     background-color: var(--color-primary);
     color: var(--color-bg);
-    border-radius: 3px;
+    border-radius: 8px;
     cursor: pointer;
     transform: translateY(-100%);
     opacity: 0;
@@ -89,15 +100,16 @@
     display: flex;
     align-items: center;
     justify-content: end;
-    gap: 0.5rem;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
 }
 
 .btn {
     background-color: var(--color-primary);
-    padding-block: 0.5rem;
-    width: 100px;
-    border-radius: 4px;
-    transition: 0.3s;
+    padding: 0.6rem 1rem;
+    width: 120px;
+    border-radius: 10px;
+    transition: transform 0.1s ease, background-color 0.3s ease, color 0.3s ease;
     cursor: pointer;
 }
 
@@ -113,4 +125,8 @@
 .cancel:hover {
     background-color: var(--color-primary);
     color: var(--color-bg);
+}
+
+.btn:active {
+    transform: translateY(1px);
 }

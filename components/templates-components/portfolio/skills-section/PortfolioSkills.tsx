@@ -2,14 +2,15 @@
 import React, { useState } from 'react';
 import styles from './PortfolioSkills.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { editTemplateData, templateDataState } from '@/RTK/slices/templateSlice/templateDataSlice';
+import { editTemplateData, templateDataState, removeTemplateSection } from '@/RTK/slices/templateSlice/templateDataSlice';
 import { SkillCategories } from '@/types';
 import SkillsModel from '../../models/skillsModel/SkillsModel';
+import { MdDelete } from 'react-icons/md';
 
 
 
 
-const PortfolioSkills = ({ skillsTemplate }: { skillsTemplate: SkillCategories[] }) => {
+const PortfolioSkills = ({ skillsTemplate, isPortfolio = false }: { skillsTemplate: SkillCategories[], isPortfolio?: boolean }) => {
   const [skillCategories, setSkillCategories] = useState([...skillsTemplate])
   const [openModel, setOpenModel] = useState<boolean[]>(new Array(skillCategories.length as number).fill(false))
   const [openModelNewSkill, setOpenModelNewSkill] = useState(false)
@@ -66,18 +67,18 @@ const PortfolioSkills = ({ skillsTemplate }: { skillsTemplate: SkillCategories[]
                 ))}
               </div>
             </div>
-            <div className={styles.btns}>
+            {!isPortfolio && <div className={styles.btns}>
               <button onClick={() => handleOpenModel(index)}>Edit</button>
               <button onClick={() => handleDeleteSkill(index)}>Delete</button>
-            </div>
+            </div>}
             {openModel[index] && <SkillsModel index={index} skillCategory={skillCategories[index]} skillCategories={skillCategories} setSkillCategories={setSkillCategories} handleCloseModel={handleCloseModel} />}
 
           </div>
         ))}
 
-        <div className={styles.plus} onClick={() => setOpenModelNewSkill(true)}>
+        {!isPortfolio && <div className={styles.plus} onClick={() => setOpenModelNewSkill(true)}>
           +
-        </div>
+        </div>}
       </div>
       {openModelNewSkill && <SkillsModel index={skillCategories.length} skillCategory={dataNewSkill} skillCategories={skillCategories} setSkillCategories={setSkillCategories} handleCloseModel={handleCloseModel} />}
 
@@ -99,6 +100,14 @@ const PortfolioSkills = ({ skillsTemplate }: { skillsTemplate: SkillCategories[]
           }
         </div>
       </div>
+      {!isPortfolio && <div className={styles.icons}>
+        <div className={styles.deleteIcon}>
+          <MdDelete className={styles.icon} onClick={() => dispatch(removeTemplateSection({ key: 'skillCategories' }))} />
+          <div className={`${styles.drobMenuDelete} ${styles.drobMenu}`}>
+            delete this section
+          </div>
+        </div>
+      </div>}
     </section>
   );
 }

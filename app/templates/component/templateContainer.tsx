@@ -5,31 +5,42 @@ import PortfolioContact from "@/components/templates-components/portfolio/contac
 import PortfolioHero from "@/components/templates-components/portfolio/hero-section/PortfolioHero";
 import PortfolioProjects from "@/components/templates-components/portfolio/projects-section/PortfolioProjects";
 import PortfolioSkills from "@/components/templates-components/portfolio/skills-section/PortfolioSkills";
-import { getTemplatesById } from "@/functions";
-import { addTemplate } from "@/RTK/slices/templateSlice/templateDataSlice";
+import { addTemplate, templateDataState } from "@/RTK/slices/templateSlice/templateDataSlice";
 import { appdispatch } from "@/RTK/store"
 import { initialStateTemplate } from "@/types";
-import { useParams } from "next/navigation";
 import React, { useEffect, useState } from "react"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 
 function TemplateContainer({ template }: { template: initialStateTemplate }) {
     const dispatch = useDispatch<appdispatch>();
+    const currentTemplate = useSelector(templateDataState) as unknown as initialStateTemplate | undefined;
 
     useEffect(() => {
         dispatch(addTemplate(template))
     }, [])
 
+    const tpl = currentTemplate ?? template;
+
     return <>
-        {template.heroData && <PortfolioHero heroDataTemplate={template.heroData} />}
+        {tpl.heroData && (
+            <PortfolioHero heroDataTemplate={tpl.heroData} />
+        )}
 
-        {template.aboutData && <PortfolioAbout aboutDataTemplate={template.aboutData} />}
+        {tpl.aboutData && (
+            <PortfolioAbout aboutDataTemplate={tpl.aboutData} />
+        )}
 
-        {template.projectsData && <PortfolioProjects projectsDataTemplate={template.projectsData} />}
+        {tpl.projectsData && (
+            <PortfolioProjects projectsDataTemplate={tpl.projectsData} />
+        )}
 
-        {template.skillCategories && <PortfolioSkills skillsTemplate={template.skillCategories} />}
+        {tpl.skillCategories && (
+            <PortfolioSkills skillsTemplate={tpl.skillCategories} />
+        )}
 
-        {template.contact && <PortfolioContact contactDataTemplate={template.contact} />}
+        {tpl.contact && (
+            <PortfolioContact contactDataTemplate={tpl.contact} />
+        )}
     </>
 }
 

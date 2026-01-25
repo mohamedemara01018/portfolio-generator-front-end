@@ -7,13 +7,14 @@ import HeroModel from '../../models/heroModel/HeroModel';
 import { MdDelete } from 'react-icons/md';
 import { FaEdit } from 'react-icons/fa';
 import { useDispatch } from 'react-redux';
-import { editTemplateData } from '@/RTK/slices/templateSlice/templateDataSlice';
+import { removeTemplateSection } from '@/RTK/slices/templateSlice/templateDataSlice';
 
 
 
-export default function PortfolioHero({ heroDataTemplate }: { heroDataTemplate: HeroData }) {
+export default function PortfolioHero({ heroDataTemplate, isPortfolio = false }: { heroDataTemplate: HeroData, isPortfolio?: boolean }) {
   const [heroData, setHeroData] = useState<HeroData>({ ...heroDataTemplate })
   const [isModelOpen, setModelOpen] = useState(false);
+  const dispatch = useDispatch();
 
   return (
     <section className={styles.hero}>
@@ -94,9 +95,9 @@ export default function PortfolioHero({ heroDataTemplate }: { heroDataTemplate: 
           </div>
         </div>
       </div>
-      <div className={styles.icons}>
+      {!isPortfolio && <div className={styles.icons}>
         <div className={`${styles.deleteIcon}`}>
-          <MdDelete className={`${styles.icon} `} />
+          <MdDelete className={`${styles.icon} `} onClick={() => dispatch(removeTemplateSection({ key: 'heroData' }))} />
           <div className={`${styles.drobMenuDelete} ${styles.drobMenu}`}>
             delete this section
           </div>
@@ -107,7 +108,7 @@ export default function PortfolioHero({ heroDataTemplate }: { heroDataTemplate: 
             Edit this section
           </div>
         </div>
-      </div>
+      </div>}
     </section >
   );
 }

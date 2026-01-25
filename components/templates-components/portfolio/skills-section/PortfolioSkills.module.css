@@ -4,6 +4,49 @@
   background-color: var(--color-bg);
 }
 
+/* Bottom action icons (delete) */
+.icons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 2rem;
+  margin-top: 1.5rem;
+}
+
+.icon {
+  cursor: pointer;
+  transition: 0.3s;
+  color: var(--color-primary);
+}
+
+.icon:hover {
+  transform: scale(1.05);
+}
+
+.deleteIcon {
+  position: relative;
+}
+
+.drobMenu {
+  position: absolute;
+  width: 150px;
+  top: 100%;
+  right: -110%;
+  display: none;
+  background-color: var(--color-text-light);
+  border-radius: 3px;
+  border: 1px solid var(--color-text);
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  color: var(--color-bg);
+  z-index: 1;
+}
+
+.deleteIcon:hover .drobMenuDelete {
+  display: block;
+}
+
 
 .header {
   text-align: center;

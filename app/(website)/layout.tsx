@@ -26,17 +26,21 @@ export default function RootLayout({
 }>) {
 
   return (
-    <StoreProvider>
-      <ThemeProvider >
-        <body className="wrapper">
-          <Header />
-          <div className="container">
-            {children}
-          </div>
-          <Footer />
-        </body>
-      </ThemeProvider>
-    </StoreProvider >
+    <html>
+      <body className="wrapper">
+
+        <StoreProvider>
+          <ThemeProvider>
+            <Header />
+            <div className="container">
+              {children}
+            </div>
+            <Footer />
+          </ThemeProvider>
+        </StoreProvider>
+      </body>
+    </html>
+
 
   );
 }

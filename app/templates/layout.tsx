@@ -24,16 +24,22 @@ export default async function TemplatesLayout({
     let res = await authUser(cookieHeader)
 
     if (!res?.logIn) {
-        console.log(res.logIn)
         return redirect("/login", RedirectType.replace);
     }
+
+
+
 
     return (
         <html lang="en">
             <body className="wrapper">
-                <Header />
-                <ProviderStore>{children}</ProviderStore>
-                <Footer />
+
+                <ProviderStore>
+                    <Header user={res} cookieHeader={cookieHeader} />
+                    {children}
+                    <Footer />
+                </ProviderStore>
+
             </body>
         </html>
     );

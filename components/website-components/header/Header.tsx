@@ -7,7 +7,6 @@ import Link from 'next/link'
 import { CiBoxList } from 'react-icons/ci'
 import Dropdown from '../dropdown/Dropdown'
 import { useDispatch, useSelector } from 'react-redux';
-import { registerState } from '@/RTK/slices/userSlice/registerSlice';
 import { loginState } from '@/RTK/slices/userSlice/loginSlice';
 import { appdispatch } from '@/RTK/store';
 import { fetchAuthUser } from '@/RTK/slices/userSlice/authSlice';
@@ -22,7 +21,6 @@ function Header() {
     const [user, setUser] = useState<userProfile | undefined>({ image: '' });
     const [login, setLogin] = useState(false);
     const dispatch = useDispatch<appdispatch>();
-    // const userState = useSelector(registerState);
     const userLoginState = useSelector(loginState);
     const logoutState = useSelector(logoutUserState);
     const verificationState = useSelector(verificationCodeState);

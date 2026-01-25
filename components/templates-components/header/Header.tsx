@@ -4,16 +4,26 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import styles from './header.module.css';
+import { updataUserPortfolio } from '@/functions';
+import { templateDataState } from '@/RTK/slices/templateSlice/templateDataSlice';
+import { useSelector } from 'react-redux';
+import { useRouter } from 'next/navigation';
+
 
 interface HeaderProps {
   portfolioName?: string;
   showNavigation?: boolean;
+  user: any,
+  cookieHeader: string,
+  isPortfolio?: boolean
 }
 
-export default function Header({ portfolioName = "Portfolio", showNavigation = true }: HeaderProps) {
+export default function Header({ portfolioName = "Portfolio", showNavigation = true, user, cookieHeader, isPortfolio = false }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const pathname = usePathname();
+  const [loading, setLoading] = useState(false)
+  const portfolio = useSelector(templateDataState);
+  const router = useRouter();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,6 +33,9 @@ export default function Header({ portfolioName = "Portfolio", showNavigation = t
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+
+
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -48,6 +61,18 @@ export default function Header({ portfolioName = "Portfolio", showNavigation = t
     { label: 'Contact', href: '#contact', action: () => scrollToSection('contact') },
   ];
 
+  async function saveAsPortfolio() {
+    try {
+      setLoading(true)
+      await updataUserPortfolio(cookieHeader, user.user.email, portfolio)
+    } catch (error) {
+      alert('failed to save as template')
+    }
+    finally {
+      setLoading(false)
+      router.push('/profile')
+    }
+  }
   return (
     <header className={`${styles.header} ${isScrolled ? styles.scrolled : ''}`}>
       <div className={styles.container}>
@@ -82,9 +107,16 @@ export default function Header({ portfolioName = "Portfolio", showNavigation = t
                 </svg>
                 Hire Me
               </button>
-              <button className={styles.portfolioBtn}>
-                Save as Portfolio
-              </button>
+
+              {!isPortfolio ? < button className={styles.portfolioBtn} onClick={saveAsPortfolio}>
+                {
+                  loading ? 'Save as Portfolio...' : 'Save as Portfolio'
+                }
+              </button> : < button className={styles.portfolioBtn} >
+                {
+                  loading ? 'Update as Portfolio...' : 'Update as Portfolio'
+                }
+              </button>}
 
               <button
                 className={`${styles.menuToggle} ${isMenuOpen ? styles.menuToggleOpen : ''}`}
@@ -101,39 +133,41 @@ export default function Header({ portfolioName = "Portfolio", showNavigation = t
       </div>
 
       {/* Mobile Menu Overlay */}
-      {isMenuOpen && (
-        <div className={styles.mobileOverlay} onClick={closeMenu}>
-          <div className={styles.mobileMenu} onClick={(e) => e.stopPropagation()}>
-            <div className={styles.mobileMenuHeader}>
-              <h3>Navigation</h3>
-              <button onClick={closeMenu} className={styles.closeButton}>
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
-                </svg>
-              </button>
-            </div>
-            <nav className={styles.mobileNav}>
-              <ul className={styles.mobileNavList}>
-                {navigationItems.map((item) => (
-                  <li key={item.label} className={styles.mobileNavItem}>
-                    <button
-                      onClick={item.action}
-                      className={styles.mobileNavLink}
-                    >
-                      {item.label}
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            </nav>
-            <div className={styles.mobileMenuFooter}>
-              <button className={styles.mobileCta}>
-                Get In Touch
-              </button>
+      {
+        isMenuOpen && (
+          <div className={styles.mobileOverlay} onClick={closeMenu}>
+            <div className={styles.mobileMenu} onClick={(e) => e.stopPropagation()}>
+              <div className={styles.mobileMenuHeader}>
+                <h3>Navigation</h3>
+                <button onClick={closeMenu} className={styles.closeButton}>
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
+                  </svg>
+                </button>
+              </div>
+              <nav className={styles.mobileNav}>
+                <ul className={styles.mobileNavList}>
+                  {navigationItems.map((item) => (
+                    <li key={item.label} className={styles.mobileNavItem}>
+                      <button
+                        onClick={item.action}
+                        className={styles.mobileNavLink}
+                      >
+                        {item.label}
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
+              <div className={styles.mobileMenuFooter}>
+                <button className={styles.mobileCta}>
+                  Get In Touch
+                </button>
+              </div>
             </div>
           </div>
-        </div>
-      )}
-    </header>
+        )
+      }
+    </header >
   );
 }

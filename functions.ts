@@ -1,6 +1,6 @@
 
 import { baseUrl } from "./constant";
-import { FormData, FormDataLogin, FormErrors, FormErrorsLogin } from "./types";
+import { FormData, FormDataLogin, FormErrors, FormErrorsLogin, initialStateTemplate } from "./types";
 
 const validateFormRegister = (formData: FormData) => {
     const newError: FormErrors = {};
@@ -113,4 +113,36 @@ async function getTemplatesById(id: string) {
     }
 }
 
-export { validateFormRegister, validateFormLogin, authUser, getTemplates, getTemplatesById }
+
+
+async function updataUserPortfolio(cookieHeader: string, email: string, portfolio: initialStateTemplate) {
+    try {
+        const res = await fetch(`${baseUrl}/users`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+                cookie: cookieHeader,
+            },
+            cache: 'no-store',
+            body: JSON.stringify({
+                email: email,
+                portfolio: portfolio
+            })
+        });
+        if (!res.ok) {
+            throw new Error('faile to fetch ')
+        }
+        return res.json();
+    } catch (error) {
+        throw new Error('error when fetch')
+    }
+}
+
+export {
+    updataUserPortfolio,
+    validateFormRegister,
+    validateFormLogin,
+    authUser,
+    getTemplates,
+    getTemplatesById
+}

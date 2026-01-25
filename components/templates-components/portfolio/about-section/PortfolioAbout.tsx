@@ -2,7 +2,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import styles from './PortfolioAbout.module.css'
 import { useDispatch, useSelector } from 'react-redux'
-import { editTemplateData, templateDataState } from '@/RTK/slices/templateSlice/templateDataSlice'
+import { editTemplateData, templateDataState, removeTemplateSection } from '@/RTK/slices/templateSlice/templateDataSlice'
 import { MdDelete, MdEdit } from 'react-icons/md'
 import { AboutData, initialStateTemplate } from '@/types';
 import AboutModel from '../../models/aboutModel/AboutModel';
@@ -10,10 +10,11 @@ import { FaEdit } from 'react-icons/fa';
 
 
 
-export default function PortfolioAbout({ aboutDataTemplate }: { aboutDataTemplate: AboutData }) {
+export default function PortfolioAbout({ aboutDataTemplate, isPortfolio = false }: { aboutDataTemplate: AboutData, isPortfolio?: boolean }) {
 
   const [aboutData, setAboutData] = useState({ ...aboutDataTemplate })
   const [isModelOpen, setModelOpen] = useState(false)
+  const dispatch = useDispatch();
 
 
   return (
@@ -67,9 +68,9 @@ export default function PortfolioAbout({ aboutDataTemplate }: { aboutDataTemplat
           </div>
         </div>
       </div>
-      <div className={styles.icons}>
+      {!isPortfolio && <div className={styles.icons}>
         <div className={`${styles.deleteIcon}`}>
-          <MdDelete className={`${styles.icon} `} />
+          <MdDelete className={`${styles.icon} `} onClick={() => dispatch(removeTemplateSection({ key: 'aboutData' }))} />
           <div className={`${styles.drobMenuDelete} ${styles.drobMenu}`}>
             delete this section
           </div>
@@ -80,7 +81,7 @@ export default function PortfolioAbout({ aboutDataTemplate }: { aboutDataTemplat
             Edit this section
           </div>
         </div>
-      </div>
+      </div>}
     </section >
   )
 }

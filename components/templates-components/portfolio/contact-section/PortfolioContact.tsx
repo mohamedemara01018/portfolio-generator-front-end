@@ -4,16 +4,20 @@ import styles from './PortfolioContact.module.css';
 import { Contact } from '@/types';
 import { MdDelete } from 'react-icons/md';
 import { FaEdit } from 'react-icons/fa';
+import ContactModel from '../../models/contactModel/ContactModel';
+import { useDispatch } from 'react-redux';
+import { removeTemplateSection } from '@/RTK/slices/templateSlice/templateDataSlice';
 
 
 
-export default function PortfolioContact({ contactDataTemplate }: { contactDataTemplate: Contact }) {
+export default function PortfolioContact({ contactDataTemplate, isPortfolio = false }: { contactDataTemplate: Contact, isPortfolio?: boolean }) {
   const [contact, setContact] = useState({ ...contactDataTemplate });
-  console.log(contactDataTemplate)
-
+  const [isModelOpen, setModelOpen] = useState(false);
+  const dispatch = useDispatch();
   return (
     <section className={styles.contact} id="contact">
       <div className={styles.container}>
+        {isModelOpen && <ContactModel contact={contact} setContact={setContact} setModelOpen={setModelOpen} />}
         <div className={styles.header}>
           <h2 className={styles.title}>Get In Touch</h2>
           <p className={styles.subtitle}>
@@ -126,20 +130,20 @@ export default function PortfolioContact({ contactDataTemplate }: { contactDataT
         </div>
       </div>
 
-      <div className={styles.icons}>
+      {!isPortfolio && <div className={styles.icons}>
         <div className={`${styles.deleteIcon}`}>
-          <MdDelete className={`${styles.icon} `} />
+          <MdDelete className={`${styles.icon} `} onClick={() => dispatch(removeTemplateSection({ key: 'contact' }))} />
           <div className={`${styles.drobMenuDelete} ${styles.drobMenu}`}>
             delete this section
           </div>
         </div>
-        <div className={` ${styles.editIcon}`} >
-          <FaEdit className={`${styles.icon}`} />
+        <div className={` ${styles.editIcon}`}>
+          <FaEdit className={`${styles.icon}`} onClick={() => setModelOpen(true)} />
           <div className={`${styles.drobMenuEdit}  ${styles.drobMenu}`}>
             Edit this section
           </div>
         </div>
-      </div>
+      </div>}
     </section>
   );
 }

@@ -8,8 +8,10 @@ import { fetchLoginUser, loginState } from '@/RTK/slices/userSlice/loginSlice'
 import { appdispatch } from '@/RTK/store'
 import { useRouter } from 'next/navigation'
 import { validateFormLogin } from '@/functions'
+import { toast } from 'react-toastify'
 
 function LoginForm() {
+
     const [isLoading, setLoading] = useState(false)
     const [formData, setFormDate] = useState<FormDataLogin>({
         email: '',
@@ -62,6 +64,7 @@ function LoginForm() {
             setLoading(false)
             if (fetchLoginUser.fulfilled.match(res)) {
                 router.push('/')
+                return toast('hi there')
             }
         }
     }

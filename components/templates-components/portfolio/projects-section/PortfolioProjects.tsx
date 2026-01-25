@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import styles from './PortfolioProjects.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { editTemplateData, templateDataState } from '@/RTK/slices/templateSlice/templateDataSlice';
+import { editTemplateData, templateDataState, removeTemplateSection } from '@/RTK/slices/templateSlice/templateDataSlice';
 import { FaEdit, FaImages } from 'react-icons/fa';
 import ProjectModel from '../../models/projectModel/ProjectModel';
 import { ProjectsData } from '@/types';
@@ -11,7 +11,7 @@ import { MdDelete } from 'react-icons/md';
 
 
 
-export default function PortfolioProjects({ projectsDataTemplate }: { projectsDataTemplate: ProjectsData[] }) {
+export default function PortfolioProjects({ projectsDataTemplate, isPortfolio = false }: { projectsDataTemplate: ProjectsData[], isPortfolio?: boolean }) {
   const [projectsData, setProjectsData] = useState([...projectsDataTemplate]);
   const [isModelOpen, setModelOpen] = useState(new Array(projectsData.length).fill(false));
   const [isModelOpenToAddProject, setModelOpenToAddProject] = useState(false)
@@ -123,7 +123,7 @@ export default function PortfolioProjects({ projectsDataTemplate }: { projectsDa
 
               </div>
             </div>
-            <div className={styles.editBtnContainer}>
+            {!isPortfolio && <div className={styles.editBtnContainer}>
               <button
                 className={`${styles.btn} ${styles.editBtn}`}
                 onClick={() => handleOpenModel(index)}
@@ -132,26 +132,26 @@ export default function PortfolioProjects({ projectsDataTemplate }: { projectsDa
                 onClick={() => handleDeleteProject(index)}
                 className={`${styles.btn} ${styles.deleteBtn}`}
               >Delete</button>
-            </div>
+            </div>}
 
           </div>
         ))
         }
 
-        <div className={`${styles.plus} ${styles.projectCard}`} onClick={onOpenModelWhenAdd}>
+        {!isPortfolio && <div className={`${styles.plus} ${styles.projectCard}`} onClick={onOpenModelWhenAdd}>
           +
-        </div >
+        </div >}
         {isModelOpenToAddProject && <ProjectModel projectsData={projectsData} setProjectsData={setProjectsData} project={emptyProject} index={projectsData.length} onClose={onCloseModelWhenAdd} />}
       </div >
-      <div className={styles.icons}>
+      {!isPortfolio && <div className={styles.icons}>
         <div className={`${styles.deleteIcon}`}>
-          <MdDelete className={`${styles.icon} `} />
+          <MdDelete className={`${styles.icon} `} onClick={() => dispatch(removeTemplateSection({ key: 'projectsData' }))} />
           <div className={`${styles.drobMenuDelete} ${styles.drobMenu}`}>
             delete this section
           </div>
         </div>
 
-      </div>
+      </div>}
     </section >
   );
 }
